@@ -16,6 +16,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.messaging.messaging
 import com.google.firebase.quickstart.fcm.R
 import com.google.firebase.quickstart.fcm.databinding.ActivityMainBinding
+import com.microsoft.windowsazure.messaging.notificationhubs.NotificationHub
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +39,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        // Azure Notification Hubs リスナーをセット
+        NotificationHub.setListener(CustomNotificationListener())
+
+        // ★ HubName と Listen の接続文字列をあなたの値に変更
+        NotificationHub.start(
+            application,
+            "tomkawatanh",
+            "Endpoint=sb://tomkawatanhns.servicebus.windows.net/;" +
+                    "SharedAccessKeyName=DefaultListenSharedAccessSignature;" +
+                    "SharedAccessKey=4o070Zd3B+hSibBuDxtXUx9UMmaZmEX/lftkdgSP2ms="
+        )
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel to show notifications.

@@ -80,9 +80,24 @@ dependencies {
 
     implementation("androidx.work:work-runtime:2.10.5")
 
+    implementation("com.microsoft.azure:notification-hubs-android-sdk-fcm:1.1.4")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("com.android.volley:volley:1.2.1")
+    // Firebase Messaging は既存サンプル通り
+
     // Testing dependencies
     androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
     androidTestImplementation("androidx.test:runner:1.7.0")
     androidTestImplementation("androidx.test:rules:1.7.0")
     androidTestImplementation("androidx.annotation:annotation:1.9.1")
 }
+
+//
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//        maven { url 'https://example.io' }
+//    }
+//}
